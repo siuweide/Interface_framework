@@ -12,15 +12,11 @@ class BaseRequest(object):
         return res
 
     def run_method(self, method, url, headers=None, cookies=None, data=None):
+        res = None
         if method == 'get':
             res = self.get_method(url=url, headers=headers, cookies=cookies, data=data)
         elif method == 'post':
             res = self.post_method(url=url, headers=headers, cookies=cookies, data=data)
-        try:
-            res = res.json()
-        except Exception:
-            print('不能转换为json')
-            res = res.text
         return res
 
 if __name__ == '__main__':
