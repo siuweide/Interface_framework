@@ -42,7 +42,7 @@ class OperaExcel(object):
         data = self._get_sheet_data().col_values(col)
         return data
 
-    def get_data_row(self, case_id):
+    def get_case_row(self, case_id):
         # 根据case_id，找到行号
         row_number = 0
         cols_value = self.get_col_value(col=None)

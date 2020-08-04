@@ -2,10 +2,11 @@ import json
 import unittest
 from ddt import ddt, data
 
-from Until.opera_cookies import OperaCookie
 from Until.opera_ini import OperaIni
 from Until.opera_excel import OperaExcel
 from Base.base_request import BaseRequest
+from Until.opera_cookies import OperaCookie
+from Until.opera_depend import OperaDepend
 from Until.verification import verification_result
 
 
@@ -19,6 +20,7 @@ class TestRunCaseDdt(unittest.TestCase):
         self.opera_ini = OperaIni()
         self.opera_cookies = OperaCookie()
         self.request = BaseRequest()
+        self.opera_depend = OperaDepend()
         self.base_url = self.opera_ini.get_ini_data('test', 'host')
 
     @data(*cases_data)
@@ -36,7 +38,7 @@ class TestRunCaseDdt(unittest.TestCase):
         is_cookie = cases_data[8]
         headers = cases_data[9]
         expect_result = cases_data[10]
-        row = self.opera_excel.get_data_row(case_id)
+        row = self.opera_excel.get_case_row(case_id)
         if headers == '':
             headers = None
         if is_run == 'yes':
@@ -46,12 +48,13 @@ class TestRunCaseDdt(unittest.TestCase):
                 self.opera_cookies.write_cookies(res)
             elif is_cookie == 'read':
                 if is_depend:
-                    # 1、读取前置条件的值
-                    # 2、获取到它是依赖哪个case
-                    # 3、找到那个case的行数，并且读取它的响应结果
-                    # 4、使用Jmespath方法，传入depend_key，和依赖用例的响应结果
-                    # 5、获取到值后，将修改data的值
-                    pass
+                    # 获取依赖接口的数据
+                    depend_data = self.opera_depend.get_depend_data(is_depend)
+                    try:
+                        data[depend_key] = depend_data
+                    except Exception:
+                        data = None
+                        print('data的值为空，不能替换依赖数据')
                 # 读取cookies文件的cookies
                 cookies = self.opera_cookies.read_cookies()
                 res = self.request.run_method(method, url, headers, cookies=cookies, data=data)
