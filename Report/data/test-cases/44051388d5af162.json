@@ -1,0 +1,126 @@
+{
+  "uid" : "44051388d5af162",
+  "name" : "登录密码错误",
+  "fullName" : "Run.run_case.TestRunCaseDdt#test_cases",
+  "historyId" : "4283652c0b817e36f2f355c9e6fad325",
+  "time" : {
+    "start" : 1599638902662,
+    "stop" : 1599638902861,
+    "duration" : 199
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "Run"
+  }, {
+    "name" : "suite",
+    "value" : "run_case"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestRunCaseDdt"
+  }, {
+    "name" : "host",
+    "value" : "WPYW29MHFFSYDPN"
+  }, {
+    "name" : "thread",
+    "value" : "8568-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "Run.run_case"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "actual_result",
+    "value" : "'测试失败'"
+  }, {
+    "name" : "case_id",
+    "value" : "''"
+  }, {
+    "name" : "case_name",
+    "value" : "'登录密码错误'"
+  }, {
+    "name" : "data",
+    "value" : "'{\"username\":\"siuweide\", \"password\":\"1234566\"}'"
+  }, {
+    "name" : "depend_key",
+    "value" : "''"
+  }, {
+    "name" : "expect_result",
+    "value" : "'用户名或密码错误'"
+  }, {
+    "name" : "headers",
+    "value" : "''"
+  }, {
+    "name" : "is_cookie",
+    "value" : "''"
+  }, {
+    "name" : "is_depend",
+    "value" : "''"
+  }, {
+    "name" : "is_run",
+    "value" : "'yes'"
+  }, {
+    "name" : "method",
+    "value" : "'post'"
+  }, {
+    "name" : "response",
+    "value" : "'{\"ret\": 1, \"msg\": \"\\u7528\\u6237\\u540d\\u6216\\u5bc6\\u7801\\u9519\\u8bef\"}'"
+  }, {
+    "name" : "url",
+    "value" : "'/api/mgr/signin'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "a528e1e13bd86e63",
+      "status" : "passed",
+      "time" : {
+        "start" : 1599638844040,
+        "stop" : 1599638844231,
+        "duration" : 191
+      }
+    } ],
+    "categories" : [ {
+      "name" : "测试成功",
+      "matchedStatuses" : [ "passed" ],
+      "flaky" : false
+    } ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 2,
+        "unknown" : 0,
+        "total" : 2
+      },
+      "items" : [ {
+        "uid" : "a173576e1ad91e2f",
+        "reportUrl" : "http://localhost:8080/job/test_bysms/28/allure/#testresult/a173576e1ad91e2f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1599638844040,
+          "stop" : 1599638844231,
+          "duration" : 191
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "44051388d5af162.json",
+  "parameterValues" : [ "'测试失败'", "''", "'登录密码错误'", "'{\"username\":\"siuweide\", \"password\":\"1234566\"}'", "''", "'用户名或密码错误'", "''", "''", "''", "'yes'", "'post'", "'{\"ret\": 1, \"msg\": \"\\u7528\\u6237\\u540d\\u6216\\u5bc6\\u7801\\u9519\\u8bef\"}'", "'/api/mgr/signin'" ]
+}

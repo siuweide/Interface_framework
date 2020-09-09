@@ -1,0 +1,23 @@
+[
+  {
+    "name": "忽略跳过",
+    "matchedStatuses": ["skipped"]
+  },
+  {
+    "name": "测试成功",
+    "matchedStatuses": ["passed"]
+  },
+  {
+    "name": "Outdated tests",
+    "matchedStatuses": ["broken"],
+    "traceRegex": ".*FileNotFoundException.*"
+  },
+  {
+    "name": "测试失败",
+    "matchedStatuses": ["failed"]
+  },
+  {
+    "name": "Test defects",
+    "matchedStatuses": ["broken"]
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "WPYW29MHFFSYDPN",
+    "children" : [ {
+      "name" : "8568-MainThread",
+      "children" : [ {
+        "name" : "登录成功",
+        "uid" : "cdcafcae614f407",
+        "parentUid" : "229dacbb2192504ffe4b413633db9565",
+        "status" : "passed",
+        "time" : {
+          "start" : 1599638902419,
+          "stop" : 1599638902644,
+          "duration" : 225
+        },
+        "flaky" : false,
+        "parameters" : [ "'测试成功'", "'case_01'", "'登录成功'", "'{\"username\":\"siuweide\", \"password\":\"123456\"}'", "''", "'ret'", "''", "'write'", "''", "'yes'", "'post'", "'{\"ret\": 0}'", "'/api/mgr/signin'" ]
+      }, {
+        "name" : "登录密码错误",
+        "uid" : "44051388d5af162",
+        "parentUid" : "229dacbb2192504ffe4b413633db9565",
+        "status" : "passed",
+        "time" : {
+          "start" : 1599638902662,
+          "stop" : 1599638902861,
+          "duration" : 199
+        },
+        "flaky" : false,
+        "parameters" : [ "'测试失败'", "''", "'登录密码错误'", "'{\"username\":\"siuweide\", \"password\":\"1234566\"}'", "''", "'用户名或密码错误'", "''", "''", "''", "'yes'", "'post'", "'{\"ret\": 1, \"msg\": \"\\u7528\\u6237\\u540d\\u6216\\u5bc6\\u7801\\u9519\\u8bef\"}'", "'/api/mgr/signin'" ]
+      } ],
+      "uid" : "229dacbb2192504ffe4b413633db9565"
+    } ],
+    "uid" : "2d3d8804d71c1ad0980588f6ba16131b"
+  } ]
+}

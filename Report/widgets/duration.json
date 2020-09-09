@@ -1,0 +1,21 @@
+[ {
+  "uid" : "cdcafcae614f407",
+  "name" : "登录成功",
+  "time" : {
+    "start" : 1599638902419,
+    "stop" : 1599638902644,
+    "duration" : 225
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "44051388d5af162",
+  "name" : "登录密码错误",
+  "time" : {
+    "start" : 1599638902662,
+    "stop" : 1599638902861,
+    "duration" : 199
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

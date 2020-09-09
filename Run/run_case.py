@@ -1,6 +1,6 @@
 import json
 import pytest
-from ddt import ddt, data
+import allure
 
 from Until.opera_ini import OperaIni
 from Until.opera_excel import OperaExcel
@@ -27,6 +27,8 @@ class TestRunCaseDdt():
                              'data, is_cookie, headers, expect_result, actual_result, response', cases_data)
     def test_cases(self, case_id, case_name, is_run, is_depend, depend_key, url, method,
                    data, is_cookie, headers, expect_result, actual_result, response):
+
+        allure.dynamic.title(case_name)
         try:
             case_data = json.loads(data)
         except Exception:
