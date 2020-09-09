@@ -1,7 +1,7 @@
 import os
 import unittest
 from time import strftime
-from Run.ddt_case import TestRunCaseDdt
+from Run.run_case import TestRunCaseDdt
 from BeautifulReport import BeautifulReport
 
 def go_on_run():

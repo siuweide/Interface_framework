@@ -1,5 +1,5 @@
 import json
-import unittest
+import pytest
 from ddt import ddt, data
 
 from Until.opera_ini import OperaIni
@@ -10,58 +10,50 @@ from Until.opera_depend import OperaDepend
 from Until.verification import verification_result
 
 
-@ddt
-class TestRunCaseDdt(unittest.TestCase):
+
+class TestRunCaseDdt():
 
     cases_data = OperaExcel().get_excel_value()
 
-    def setUp(self) -> None:
-        self.opera_excel = OperaExcel()
-        self.opera_ini = OperaIni()
-        self.opera_cookies = OperaCookie()
-        self.request = BaseRequest()
-        self.opera_depend = OperaDepend()
-        self.base_url = self.opera_ini.get_ini_data('test', 'host')
+    opera_excel = OperaExcel()
+    opera_ini = OperaIni()
+    opera_cookies = OperaCookie()
+    request = BaseRequest()
+    opera_depend = OperaDepend()
+    base_url = opera_ini.get_ini_data('test', 'host')
 
-    @data(*cases_data)
-    def test_cases(self, cases_data):
-        case_id = cases_data[0]
-        is_run = cases_data[2]
-        is_depend = cases_data[3]
-        depend_key = cases_data[4]
-        url = self.base_url + cases_data[5]
-        method = cases_data[6]
+
+    @pytest.mark.parametrize('case_id, case_name, is_run, is_depend, depend_key, url, method, '
+                             'data, is_cookie, headers, expect_result, actual_result, response', cases_data)
+    def test_cases(self, case_id, case_name, is_run, is_depend, depend_key, url, method,
+                   data, is_cookie, headers, expect_result, actual_result, response):
         try:
-            data = json.loads(cases_data[7])
+            case_data = json.loads(data)
         except Exception:
-            data = None
-        is_cookie = cases_data[8]
-        headers = cases_data[9]
-        expect_result = cases_data[10]
+            case_data = None
         row = self.opera_excel.get_case_row(case_id)
         if headers == '':
             headers = None
         if is_run == 'yes':
             if is_cookie == 'write':
-                res = self.request.run_method(method, url, headers, data=data)
+                res = self.request.run_method(method, self.base_url+url, headers, data=case_data)
                 # 将cookies写入cookies文件
                 self.opera_cookies.write_cookies(res)
-            elif is_cookie == 'read':
+            elif is_cookie == 'read' or is_cookie == '':
                 if is_depend:
                     # 获取依赖接口的数据
                     depend_data = self.opera_depend.get_depend_data(is_depend)
                     try:
-                        data[depend_key] = depend_data
+                        case_data[depend_key] = depend_data
                     except Exception:
-                        data = None
-                        print('data的值为空，不能替换依赖数据')
+                        case_data = None
                 # 读取cookies文件的cookies
                 cookies = self.opera_cookies.read_cookies()
-                res = self.request.run_method(method, url, headers, cookies=cookies, data=data)
+                res = self.request.run_method(method, self.base_url+url, headers, cookies=cookies, data=case_data)
             if verification_result(expect_result, res):
                 self.opera_excel.write_actual_res_result(row, '测试成功', res.text)
             else:
                 self.opera_excel.write_actual_res_result(row, '测试失败', res.text)
 
 if __name__ == '__main__':
-    unittest.main()
+    pytest.main()
