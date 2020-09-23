@@ -2,20 +2,11 @@ import os
 import json
 import requests
 
-base_path = os.path.abspath(os.path.dirname(__file__))
-cookies_path = base_path + '/Config/cookies.json'
-print(cookies_path)
-url = 'http://127.0.0.1:8000/accounts/login/'
-data = {"username":"siuweide", "password":"123456"}
-url1 = 'http://127.0.0.1:8000/api/add_event/'
-data1 = {"eid":1, "name":"测试发布会", "limit":100, "status":"1", "address":"zs", "start_time":"2020-08-03 10:22:30"}
-url2 = 'http://127.0.0.1:8000/api/cancel_event/'
-data2 = {"event_id":1}
-url3 = 'http://127.0.0.1:8000/api/get_event_list/'
-res = requests.post(url, data)
-cookies = requests.utils.dict_from_cookiejar(res.cookies)
-# with open(cookies_path, 'w') as f:
-#     f.write(json.dumps(cookies))
+x= {"orderType":"OUTBOUND","gfsOrderId":"oneList","isMerge":"N","sellerUserId":"testuser_houlingzhong","buyerUserId":"lilazngirl2303","sellerOrderCode":"OrderCode","warehouseCode":"US0001","VATNo":"","deliveryWay":"OSF820823","status":"WFD","buyerFullname":"JONATHAN MCCORMACK","buyerEmail":"bells20052000@yahoo.com","buyerPhone":"01540 661381","buyerCountry":"UK","buyerState":"Bitterfeld-Wolfen","buyerCity":"kingussie","buyerPostCode":"PH21 1he","doorplateNumbers":"","buyerCompany":"","buyerAddreess1":"mccormacks garage","buyerAddreess2":"newtonmore road","gfsOrderList":[{"gfsOrderId":"oneList"}],"productList":[{"productCode":"auto_sku21","specifications":"","productName":"api自动化商品002","productNameEn":"auto_sku21","orderQuantity":"1","transactionId":"31","itemId":"2323","reSelect":"Y","platformItemId":"2323"}],"deliveryWayName":"VAS - Self pick up service","warehouseName":"USWC Warehouse","vasList":"[]","isSubmit":"Y"}
+json_x = json.dumps(x)
+print(type(json_x))
 
-res1 = requests.post(url1, data=data1, cookies=cookies)
-print(res1.json())
+data={
+'form':json_x,
+ 'ajax': 1
+}
